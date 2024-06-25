@@ -1,34 +1,40 @@
+const validate = (value) => {
+  if (!value) {
+    return false
+  }
+
+  const numberValue = Number(value);
+
+  if (
+    Number.isInteger(numberValue) &&
+    numberValue > 0 &&
+    numberValue < 100 &&
+    numberValue % 2 === 0
+  ) {
+    return true
+  } 
+  return false
+}
+
+const inputElem = document.getElementById('input');
+const validateBtn = document.getElementById('button');
+const resetBtn = document.getElementById('button2');
+const resultElem = document.getElementById('result');
+
+const handleValidation = () => {
+  const inputValue = inputElem.value
+  const result = validate(inputValue);
+  resultElem.innerHTML = result ? "Valid" : "Invalid"
+}
+
+const handleClear = () => {
+  inputElem.value = "";
+  resultElem.innerHTML = ""
+}
+
 function validator() {
-  const input = document.getElementById('input');
-  const button = document.getElementById('button');
-  const button2 = document.getElementById('button2');
-  const result = document.getElementById('result');
-
-  button.addEventListener('click', () => {
-    if (input.value) {
-      if (Number.isInteger(input.value)) {
-        if (
-          Number(input.value) > 0 &&
-          Number(input.value) < 100 &&
-          Number(input.value) % 2 === 0
-        ) {
-          result.innerHTML = 'Valid';
-        } else {
-          result.innerHTML = 'Invalid';
-        }
-        result.innerHTML = 'Valid';
-      } else {
-        result.innerHTML = 'Invalid';
-      }
-    } else {
-      result.innerHTML = 'Invalid';
-    }
-  });
-
-  button2.addEventListener('click', () => {
-    input.value = '';
-    result.innerHTML = '';
-  });
+  validateBtn.addEventListener('click', handleValidation)
+  resetBtn.addEventListener('click', handleClear)
 }
 
 validator();
