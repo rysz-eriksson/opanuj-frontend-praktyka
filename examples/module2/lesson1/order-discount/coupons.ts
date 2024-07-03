@@ -3,12 +3,12 @@ import { Order } from './types';
 export function calculateDiscount(order: Order): number {
   let discount = 0;
 
-  // Jeśli suma zamówienia przekroczy 1000, dodaj 10% zniżki
   const totalAmount = order.items.reduce(
-    (acc, item) => acc + item.product.price * item.quantity,
+    (acc, item) => (acc + item.product.price * item.quantity),
     0
   );
-
+  
+  // Jeśli suma zamówienia przekroczy 1000, dodaj 10% zniżki
   if (totalAmount > 1000) {
     discount += 10;
   }
