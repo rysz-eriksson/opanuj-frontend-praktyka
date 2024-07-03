@@ -1,10 +1,10 @@
 import "./App.css";
-import CharacterSearchContainer from "./containers/CharacterSearchContainer";
+import ToDoContainer from "./modules/todo/ToDoContainer";
 
 function App() {
   return (
     <div>
-      <CharacterSearchContainer />
+      <ToDoContainer />
     </div>
   );
 }
