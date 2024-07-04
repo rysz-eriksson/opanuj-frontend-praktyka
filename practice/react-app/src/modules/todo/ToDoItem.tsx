@@ -9,8 +9,6 @@ export const ToDoItem: FC<{todo: TodoItem, dispatch: Dispatch<REDUCER_ACTIONS>}>
     const {description, order, done, title, id} = todo
 
     const removeTodo = () => {
-        console.log("remove")
-
         dispatch({
             type: "REMOVE_TODO",
             payload: id
@@ -18,7 +16,6 @@ export const ToDoItem: FC<{todo: TodoItem, dispatch: Dispatch<REDUCER_ACTIONS>}>
     }
 
     const markAsDone = () => {
-        console.log("mark as done")
         dispatch({
             type: "MARK_TODO_AS_DONE",
             payload: id
@@ -31,9 +28,11 @@ export const ToDoItem: FC<{todo: TodoItem, dispatch: Dispatch<REDUCER_ACTIONS>}>
                 <span className="w-6 h-6">{order}</span>
                 <span className="w-24 h-6">{title}</span>
                 {done ? (
+                <span data-testid="check-icon">
                     <FaCheck className="w-6 h-6 text-green-500" />
+                </span>
                 ) : (
-                <span className="w-6 h-6"></span> // Placeholder for alignment, if needed
+                <span className="w-6 h-6"></span>
                 )}
                 <button className="p-1 rounded-md bg-red-500 text-white" onClick={removeTodo}>
                     Delete
